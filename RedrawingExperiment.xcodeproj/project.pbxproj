@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C44818F7284DE50C00D4C056 /* Example1b.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44818F6284DE50C00D4C056 /* Example1b.swift */; };
+		C44818FB284DF10F00D4C056 /* Example1c.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44818FA284DF10F00D4C056 /* Example1c.swift */; };
 		C496E8EB27C981EA00057465 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C496E8EA27C981EA00057465 /* Helpers.swift */; };
 		C496E8ED27C9820900057465 /* Example1.swift in Sources */ = {isa = PBXBuildFile; fileRef = C496E8EC27C9820900057465 /* Example1.swift */; };
 		C496E8EF27C9834400057465 /* Example2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C496E8EE27C9834400057465 /* Example2.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C44818F6284DE50C00D4C056 /* Example1b.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example1b.swift; sourceTree = "<group>"; };
+		C44818FA284DF10F00D4C056 /* Example1c.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example1c.swift; sourceTree = "<group>"; };
 		C496E8EA27C981EA00057465 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		C496E8EC27C9820900057465 /* Example1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example1.swift; sourceTree = "<group>"; };
 		C496E8EE27C9834400057465 /* Example2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example2.swift; sourceTree = "<group>"; };
@@ -64,6 +68,8 @@
 				C497DE1D27C3821C00CAA57F /* RedrawingExperimentApp.swift */,
 				C497DE1F27C3821C00CAA57F /* ContentView.swift */,
 				C496E8EC27C9820900057465 /* Example1.swift */,
+				C44818F6284DE50C00D4C056 /* Example1b.swift */,
+				C44818FA284DF10F00D4C056 /* Example1c.swift */,
 				C496E8EE27C9834400057465 /* Example2.swift */,
 				C496E8F027C9855A00057465 /* Example3.swift */,
 				C496E8F227C98B1000057465 /* Example4.swift */,
@@ -157,7 +163,9 @@
 				C496E8F127C9855A00057465 /* Example3.swift in Sources */,
 				C496E8EB27C981EA00057465 /* Helpers.swift in Sources */,
 				C496E8ED27C9820900057465 /* Example1.swift in Sources */,
+				C44818FB284DF10F00D4C056 /* Example1c.swift in Sources */,
 				C497DE1E27C3821C00CAA57F /* RedrawingExperimentApp.swift in Sources */,
+				C44818F7284DE50C00D4C056 /* Example1b.swift in Sources */,
 				C496E8EF27C9834400057465 /* Example2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

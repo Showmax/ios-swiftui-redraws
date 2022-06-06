@@ -14,7 +14,7 @@ public extension ShapeStyle where Self == Color {
             red: .random(in: 0...1),
             green: .random(in: 0...1),
             blue: .random(in: 0...1)
-        ).opacity(0.3)
+        ).opacity(0.7)
     #else
         return Color(.clear)
     #endif

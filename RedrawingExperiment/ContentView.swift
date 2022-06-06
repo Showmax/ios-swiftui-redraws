@@ -8,9 +8,19 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                NavigationLink("#1 Basic example") {
+                NavigationLink("#1A Basic example") {
                     Example1.ContentView()
-                        .navigationTitle("#1 Basic example")
+                        .navigationTitle("#1A Basic example")
+                        .navigationBarTitleDisplayMode(.inline)
+                }
+                NavigationLink("#1B Basic example with Bindings") {
+                    Example1b.ContentView()
+                        .navigationTitle("#1B Basic example with Bindings")
+                        .navigationBarTitleDisplayMode(.inline)
+                }
+                NavigationLink("#1C Basic example with unused closure") {
+                    Example1c.ContentView()
+                        .navigationTitle("#1C Basic example with unused closure")
                         .navigationBarTitleDisplayMode(.inline)
                 }
                 NavigationLink("#2 Separate observable objects") {

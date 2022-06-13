@@ -41,8 +41,8 @@ enum Example3 {
     // MARK: - Views
 
     struct ContentView: View {
-        @StateObject var seriesModel = SeriesModel()
-        @StateObject var episodesModel = EpisodesModel()
+        @StateObject private var seriesModel = SeriesModel()
+        @StateObject private var episodesModel = EpisodesModel()
         var body: some View {
             VStack(spacing: 16) {
                 TitleView(title: seriesModel.title)

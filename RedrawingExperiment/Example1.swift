@@ -27,15 +27,6 @@ enum Example1 {
             Episode(title: "5th: The Invitations"),
             Episode(title: "6th: The Bachelorette")
         ]
-
-        func toggleFavouriteEpisode(_ episodeID: Episode.ID) {
-            episodes = episodes.map { episode in
-                guard episode.id == episodeID else { return episode }
-                var episode = episode
-                episode.isMyFavourite.toggle()
-                return episode
-            }
-        }
     }
 
     // MARK: - Views
@@ -48,7 +39,7 @@ enum Example1 {
 
     struct ContentView: View {
 
-        @StateObject var model = SeriesModel() /// ➡️ Here SwiftUI starts listening on objectWillChange in our model.
+        @StateObject private var model = SeriesModel() /// ➡️ Here SwiftUI starts listening on objectWillChange in our model.
 
         var body: some View {
             VStack(spacing: 16) {
@@ -117,5 +108,14 @@ extension Example1.SeriesModel {
         let id = UUID()
         let title: String
         var isMyFavourite: Bool = false
+    }
+    
+    func toggleFavouriteEpisode(_ episodeID: Episode.ID) {
+        episodes = episodes.map { episode in
+            guard episode.id == episodeID else { return episode }
+            var episode = episode
+            episode.isMyFavourite.toggle()
+            return episode
+        }
     }
 }

@@ -20,15 +20,6 @@ enum Example1c {
             Episode(title: "5th: The Invitations"),
             Episode(title: "6th: The Bachelorette")
         ]
-
-        func toggleFavouriteEpisode(_ episodeID: Episode.ID) {
-            episodes = episodes.map { episode in
-                guard episode.id == episodeID else { return episode }
-                var episode = episode
-                episode.isMyFavourite.toggle()
-                return episode
-            }
-        }
     }
 
     // MARK: - Views
@@ -37,7 +28,7 @@ enum Example1c {
     // ➡️ Previously was created with just constant string. Now with closure that captures model.
 
     struct ContentView: View {
-        @StateObject var model = SeriesModel()
+        @StateObject private var model = SeriesModel()
         var body: some View {
             VStack(spacing: 16) {
                 TitleView(
@@ -110,5 +101,14 @@ extension Example1c.SeriesModel {
         let id = UUID()
         let title: String
         var isMyFavourite: Bool = false
+    }
+
+    func toggleFavouriteEpisode(_ episodeID: Episode.ID) {
+        episodes = episodes.map { episode in
+            guard episode.id == episodeID else { return episode }
+            var episode = episode
+            episode.isMyFavourite.toggle()
+            return episode
+        }
     }
 }

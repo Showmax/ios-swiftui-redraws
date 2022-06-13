@@ -22,22 +22,13 @@ enum Example1d {
             Episode(title: "5th: The Invitations"),
             Episode(title: "6th: The Bachelorette")
         ] + (1...100_000).map { Episode(title: "#\($0): The Bachelorette") }
-
-        func toggleFavouriteEpisode(_ episodeID: Episode.ID) {
-            episodes = episodes.map { episode in
-                guard episode.id == episodeID else { return episode }
-                var episode = episode
-                episode.isMyFavourite.toggle()
-                return episode
-            }
-        }
     }
 
     // MARK: - Views
 
     struct ContentView: View {
 
-        @StateObject var model = SeriesModel()
+        @StateObject private var model = SeriesModel()
 
         var body: some View {
             VStack(spacing: 16) {
@@ -109,5 +100,14 @@ extension Example1d.SeriesModel {
         let id = UUID()
         let title: String
         var isMyFavourite: Bool = false
+    }
+    
+    func toggleFavouriteEpisode(_ episodeID: Episode.ID) {
+        episodes = episodes.map { episode in
+            guard episode.id == episodeID else { return episode }
+            var episode = episode
+            episode.isMyFavourite.toggle()
+            return episode
+        }
     }
 }

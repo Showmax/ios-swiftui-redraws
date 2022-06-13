@@ -8,19 +8,14 @@ enum Example2 {
 
     // MARK: - Model
 
+    /// Changed to two separate models.
+
     class SeriesModel: ObservableObject {
         @Published var title: String = "Tali’s Wedding Diary"
         @Published var isMyFavourite: Bool = false
     }
 
     class EpisodesModel: ObservableObject {
-
-        struct Episode: Identifiable {
-            let id = UUID()
-            let title: String
-            var isMyFavourite: Bool = false
-        }
-
         @Published var episodes: [Episode] = [
             Episode(title: "1st: The Engagement"),
             Episode(title: "2nd: The Bridesmaids"),
@@ -28,8 +23,7 @@ enum Example2 {
             Episode(title: "4th: The Dress"),
             Episode(title: "5th: The Invitations"),
             Episode(title: "6th: The Bachelorette")
-        ]
-
+        ] + (1...50_000).map { Episode(title: "#\($0): The Bachelorette") }
         func toggleFavouriteEpisode(_ episodeID: Episode.ID) {
             episodes = episodes.map { episode in
                 guard episode.id == episodeID else { return episode }
@@ -81,35 +75,38 @@ enum Example2 {
 
     struct EpisodesView: View {
         @ObservedObject var model: EpisodesModel
-
         var body: some View {
             VStack {
                 Text("Episodes")
                     .font(.headline)
-                ForEach(model.episodes) { episode in
-                    HStack {
-                        Text(episode.title).font(.body)
-                        Spacer()
-                        Button(
-                            action: {
-                                model.toggleFavouriteEpisode(episode.id)
-                            },
-                            label: {
-                                Image(systemName: episode.isMyFavourite ? "heart.fill" : "heart")
-                            }
-                        ).buttonStyle(.borderless)
+                List {
+                    ForEach(model.episodes) { episode in
+                        HStack {
+                            Text(episode.title).font(.body)
+                            Spacer()
+                            Button(
+                                action: {
+                                    model.toggleFavouriteEpisode(episode.id)
+                                },
+                                label: {
+                                    Image(systemName: episode.isMyFavourite ? "heart.fill" : "heart")
+                                }
+                            ).buttonStyle(.borderless)
+                        }
+                        .padding()
+                        .background(.debug)
                     }
-                    .padding()
-                    .background(.debug)
-                }
+                }.listStyle(.plain)
             }
             .background(.debug)
         }
     }
+}
 
-    private struct Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
-        }
+extension Example2.EpisodesModel {
+    struct Episode: Identifiable {
+        let id = UUID()
+        let title: String
+        var isMyFavourite: Bool = false
     }
 }

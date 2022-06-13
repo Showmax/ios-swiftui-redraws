@@ -3,20 +3,17 @@
 //
 
 import SwiftUI
-import Combine
 
-/// ➡️ Do manually yourself all the work that is doing SwiftUI.
-enum Example4 {
+enum Example1d {
 
     // MARK: - Model
 
     class SeriesModel: ObservableObject {
 
         @Published var title: String = "Tali’s Wedding Diary"
+        @Published var isMyFavourite: Bool = false
 
-        /// ➡️ Combine subject, that is also publisher so in SwiftUI we can listen on its changes.
-        var isMyFavourite: CurrentValueSubject<Bool, Never> = .init(false)
-
+        /// ➡️ Try lot of episodes
         @Published var episodes: [Episode] = [
             Episode(title: "1st: The Engagement"),
             Episode(title: "2nd: The Bridesmaids"),
@@ -25,12 +22,23 @@ enum Example4 {
             Episode(title: "5th: The Invitations"),
             Episode(title: "6th: The Bachelorette")
         ] + (1...100_000).map { Episode(title: "#\($0): The Bachelorette") }
+
+        func toggleFavouriteEpisode(_ episodeID: Episode.ID) {
+            episodes = episodes.map { episode in
+                guard episode.id == episodeID else { return episode }
+                var episode = episode
+                episode.isMyFavourite.toggle()
+                return episode
+            }
+        }
     }
 
     // MARK: - Views
 
     struct ContentView: View {
-        @StateObject private var model = SeriesModel()
+
+        @StateObject var model = SeriesModel()
+
         var body: some View {
             VStack(spacing: 16) {
                 TitleView(title: model.title)
@@ -51,28 +59,17 @@ enum Example4 {
 
     struct MyFavouriteView: View {
         @ObservedObject var model: SeriesModel
-
-        /// ➡️ Here will be stored latest state to be shown in UI.
-        /// SwiftUI will redraw anytime this value changes.
-        @State private var isMyFavourite: Bool = false
-
         var body: some View {
             HStack {
                Button(
-                    action: { model.isMyFavourite.send(!isMyFavourite) },
-                    label: {
-                        /// ➡️ Set @State value into some view
-                        /// We could also pass it deeper via @Binding and then surrounding views won't be redrawn.
-                        Image(systemName: isMyFavourite ? "heart.fill" : "heart")
-                        Text(isMyFavourite ? "Remove from favourites" : "Add to favourites")
-                    }
+                  action: { model.isMyFavourite.toggle() },
+                  label: {
+                      Image(systemName: model.isMyFavourite ? "heart.fill" : "heart")
+                      Text(model.isMyFavourite ? "Remove from favourites" : "Add to favourites")
+                  }
                )
             }
             .background(.debug)
-            .onReceive(model.isMyFavourite) { /// ➡️ Start listening on changes in model `isMyFavourite` publisher.
-                /// ➡️ On change store value in @State, so that SwiftUI can rerender view.
-                isMyFavourite = $0
-            }
         }
     }
 
@@ -107,19 +104,10 @@ enum Example4 {
     }
 }
 
-extension Example4.SeriesModel {
+extension Example1d.SeriesModel {
     struct Episode: Identifiable {
         let id = UUID()
         let title: String
         var isMyFavourite: Bool = false
-    }
-
-    func toggleFavouriteEpisode(_ episodeID: Episode.ID) {
-        episodes = episodes.map { episode in
-            guard episode.id == episodeID else { return episode }
-            var episode = episode
-            episode.isMyFavourite.toggle()
-            return episode
-        }
     }
 }

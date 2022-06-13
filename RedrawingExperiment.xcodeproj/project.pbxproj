@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C43ACAD128577C9200E14143 /* Example1d.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43ACAD028577C9200E14143 /* Example1d.swift */; };
 		C44818F7284DE50C00D4C056 /* Example1b.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44818F6284DE50C00D4C056 /* Example1b.swift */; };
 		C44818FB284DF10F00D4C056 /* Example1c.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44818FA284DF10F00D4C056 /* Example1c.swift */; };
 		C496E8EB27C981EA00057465 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C496E8EA27C981EA00057465 /* Helpers.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C43ACAD028577C9200E14143 /* Example1d.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example1d.swift; sourceTree = "<group>"; };
 		C44818F6284DE50C00D4C056 /* Example1b.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example1b.swift; sourceTree = "<group>"; };
 		C44818FA284DF10F00D4C056 /* Example1c.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example1c.swift; sourceTree = "<group>"; };
 		C496E8EA27C981EA00057465 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				C496E8EC27C9820900057465 /* Example1.swift */,
 				C44818F6284DE50C00D4C056 /* Example1b.swift */,
 				C44818FA284DF10F00D4C056 /* Example1c.swift */,
+				C43ACAD028577C9200E14143 /* Example1d.swift */,
 				C496E8EE27C9834400057465 /* Example2.swift */,
 				C496E8F027C9855A00057465 /* Example3.swift */,
 				C496E8F227C98B1000057465 /* Example4.swift */,
@@ -162,6 +165,7 @@
 				C497DE2027C3821C00CAA57F /* ContentView.swift in Sources */,
 				C496E8F127C9855A00057465 /* Example3.swift in Sources */,
 				C496E8EB27C981EA00057465 /* Helpers.swift in Sources */,
+				C43ACAD128577C9200E14143 /* Example1d.swift in Sources */,
 				C496E8ED27C9820900057465 /* Example1.swift in Sources */,
 				C44818FB284DF10F00D4C056 /* Example1c.swift in Sources */,
 				C497DE1E27C3821C00CAA57F /* RedrawingExperimentApp.swift in Sources */,

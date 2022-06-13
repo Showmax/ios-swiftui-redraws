@@ -10,12 +10,6 @@ enum Example1b {
 
     class SeriesModel: ObservableObject {
 
-        struct Episode: Identifiable {
-            let id = UUID()
-            let title: String
-            var isMyFavourite: Bool = false
-        }
-
         @Published var title: String = "Tali’s Wedding Diary"
         @Published var isMyFavourite: Bool = false
         @Published var episodes: [Episode] = [
@@ -54,7 +48,7 @@ enum Example1b {
     }
 
     struct TitleView: View {
-        @Binding var title: String
+        @Binding var title: String /// ➡️ Changed to Binding.
         var body: some View {
             Text(title)
                 .font(.largeTitle)
@@ -63,7 +57,7 @@ enum Example1b {
     }
 
     struct MyFavouriteView: View {
-        @Binding var isMyFavourite: Bool
+        @Binding var isMyFavourite: Bool /// ➡️ Changed to Binding.
         var body: some View {
             HStack {
                Button(
@@ -79,7 +73,7 @@ enum Example1b {
     }
 
     struct EpisodesView: View {
-        @Binding var episodes: [SeriesModel.Episode]
+        @Binding var episodes: [SeriesModel.Episode] /// ➡️ Changed to Binding.
         let toggleFavouriteEpisode: (SeriesModel.Episode.ID) -> Void
 
         var body: some View {
@@ -106,10 +100,12 @@ enum Example1b {
             .background(.debug)
         }
     }
+}
 
-    private struct Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
-        }
+extension Example1b.SeriesModel {
+    struct Episode: Identifiable {
+        let id = UUID()
+        let title: String
+        var isMyFavourite: Bool = false
     }
 }

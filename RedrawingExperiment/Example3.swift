@@ -8,12 +8,16 @@ enum Example3 {
 
     // MARK: - Model
 
+    /// ➡️ Changed to three separate models.
+    /// ➡️ Each episode separate model instance.
+
     class SeriesModel: ObservableObject {
         @Published var title: String = "Tali’s Wedding Diary"
         @Published var isMyFavourite: Bool = false
     }
 
     class EpisodesModel: ObservableObject {
+        /// ➡️ Lots of episodes
         @Published var episodes: [EpisodeModel] = [
             EpisodeModel(title: "1st: The Engagement"),
             EpisodeModel(title: "2nd: The Bridesmaids"),
@@ -21,7 +25,7 @@ enum Example3 {
             EpisodeModel(title: "4th: The Dress"),
             EpisodeModel(title: "5th: The Invitations"),
             EpisodeModel(title: "6th: The Bachelorette")
-        ]
+        ] + (1...100_000).map { EpisodeModel(title: "#\($0): The Bachelorette") }
     }
 
     class EpisodeModel: ObservableObject, Identifiable {
@@ -75,22 +79,24 @@ enum Example3 {
 
     struct EpisodesView: View {
         @ObservedObject var model: EpisodesModel
-
         var body: some View {
             VStack {
                 Text("Episodes")
                     .font(.headline)
-                ForEach(model.episodes) { episode in
-                    EpisodeView(model: episode)
+                List {
+                    ForEach(model.episodes) { episode in
+                        EpisodeView(model: episode)
+                    }
                 }
+                .listStyle(.plain)
             }
             .background(.debug)
         }
     }
 
+    /// ➡️ Each row view listens on separatate ObservableObject model.
     struct EpisodeView: View {
         @ObservedObject var model: EpisodeModel
-
         var body: some View {
             HStack {
                 Text(model.title).font(.body)
@@ -106,12 +112,6 @@ enum Example3 {
             }
             .padding()
             .background(.debug)
-        }
-    }
-
-    private struct Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
         }
     }
 }

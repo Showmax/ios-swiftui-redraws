@@ -13,14 +13,19 @@ struct ContentView: View {
                         .navigationTitle("#1A Basic example")
                         .navigationBarTitleDisplayMode(.inline)
                 }
-                NavigationLink("#1B Basic example with Bindings") {
+                NavigationLink("#1B Basic with Bindings") {
                     Example1b.ContentView()
-                        .navigationTitle("#1B Basic example with Bindings")
+                        .navigationTitle("#1B Basic with Bindings")
                         .navigationBarTitleDisplayMode(.inline)
                 }
-                NavigationLink("#1C Basic example with unused closure") {
+                NavigationLink("#1C Basic with unused closure") {
                     Example1c.ContentView()
-                        .navigationTitle("#1C Basic example with unused closure")
+                        .navigationTitle("#1C Basic with unused closure")
+                        .navigationBarTitleDisplayMode(.inline)
+                }
+                NavigationLink("#1D Basic with 100.000 episodes") {
+                    Example1d.ContentView()
+                        .navigationTitle("#1D Basic with 100.000 episodes")
                         .navigationBarTitleDisplayMode(.inline)
                 }
                 NavigationLink("#2 Separate observable objects") {

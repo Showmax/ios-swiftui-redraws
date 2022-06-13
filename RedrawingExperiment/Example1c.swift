@@ -10,12 +10,6 @@ enum Example1c {
 
     class SeriesModel: ObservableObject {
 
-        struct Episode: Identifiable {
-            let id = UUID()
-            let title: String
-            var isMyFavourite: Bool = false
-        }
-
         @Published var title: String = "Tali’s Wedding Diary"
         @Published var isMyFavourite: Bool = false
         @Published var episodes: [Episode] = [
@@ -38,6 +32,9 @@ enum Example1c {
     }
 
     // MARK: - Views
+
+    // ➡️ TitleView captures model. Leads to redraws despite previously was not redraw.
+    // ➡️ Previously was created with just constant string. Now with closure that captures model.
 
     struct ContentView: View {
         @StateObject var model = SeriesModel()
@@ -106,10 +103,12 @@ enum Example1c {
             .background(.debug)
         }
     }
+}
 
-    private struct Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
-        }
+extension Example1c.SeriesModel {
+    struct Episode: Identifiable {
+        let id = UUID()
+        let title: String
+        var isMyFavourite: Bool = false
     }
 }

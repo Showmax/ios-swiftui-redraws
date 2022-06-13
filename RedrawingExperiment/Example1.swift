@@ -8,13 +8,14 @@ enum Example1 {
 
     // MARK: - Model
 
-    class SeriesModel: ObservableObject {
+    /// ➡️ Model implements ObservableObject
+    ///
+    /// ➡️ Protocol automatically creates Combine publisher `var objectWillChange: ObservableObjectPublisher`
+    ///     - emits when any of @Published vars change
+    ///
+    /// ➡️ @Published marks data that should be shown in UI and could change over time.
 
-        struct Episode: Identifiable {
-            let id = UUID()
-            let title: String
-            var isMyFavourite: Bool = false
-        }
+    class SeriesModel: ObservableObject {
 
         @Published var title: String = "Tali’s Wedding Diary"
         @Published var isMyFavourite: Bool = false
@@ -39,8 +40,16 @@ enum Example1 {
 
     // MARK: - Views
 
+    /// ➡️ View that shows the detail screen. See how it looks in simulator.
+    ///
+    /// ➡️ Consists of three subviews (title, add to favourites button, list of episodes, each episode favourites button).
+    ///
+    /// ➡️ Each view is using same model.
+
     struct ContentView: View {
-        @StateObject var model = SeriesModel()
+
+        @StateObject var model = SeriesModel() /// ➡️ Here SwiftUI starts listening on objectWillChange in our model.
+
         var body: some View {
             VStack(spacing: 16) {
                 TitleView(title: model.title)
@@ -77,7 +86,6 @@ enum Example1 {
 
     struct EpisodesView: View {
         @ObservedObject var model: SeriesModel
-
         var body: some View {
             VStack {
                 Text("Episodes")
@@ -102,10 +110,12 @@ enum Example1 {
             .background(.debug)
         }
     }
+}
 
-    private struct Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
-        }
+extension Example1.SeriesModel {
+    struct Episode: Identifiable {
+        let id = UUID()
+        let title: String
+        var isMyFavourite: Bool = false
     }
 }

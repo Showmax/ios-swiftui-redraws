@@ -14,7 +14,8 @@ enum Example4 {
 
         @Published var title: String = "Tali’s Wedding Diary"
 
-        /// ➡️ Combine subject, that is also publisher so in SwiftUI we can listen on its changes.
+        /// ➡️ Removed @Published wrapper.
+        /// ➡️ Changed it to Combine subject, that is also publisher so in SwiftUI we can listen on its changes.
         var isMyFavourite: CurrentValueSubject<Bool, Never> = .init(false)
 
         @Published var episodes: [Episode] = [

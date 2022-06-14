@@ -16,6 +16,7 @@ enum Example4 {
 
         /// ➡️ Removed @Published wrapper.
         /// ➡️ Changed it to Combine subject, that is also publisher so in SwiftUI we can listen on its changes.
+        /// ➡️ This means setting won't call internal `objectWillChange` publisher. We have separate publisher here.
         var isMyFavourite: CurrentValueSubject<Bool, Never> = .init(false)
 
         @Published var episodes: [Episode] = [

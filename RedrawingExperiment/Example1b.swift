@@ -38,6 +38,10 @@ enum Example1b {
         }
     }
 
+    /// ➡️ Just little change in views.
+    /// - now not referencing ObservableObject directly
+    /// - but actually referencing it indirectly through Binding
+
     struct TitleView: View {
         @Binding var title: String /// ➡️ Changed to Binding.
         var body: some View {

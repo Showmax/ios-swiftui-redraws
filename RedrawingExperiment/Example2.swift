@@ -15,6 +15,7 @@ enum Example2 {
         @Published var isMyFavourite: Bool = false
     }
 
+    /// ➡️ Here we extracted episodes into separate object.
     class EpisodesModel: ObservableObject {
         @Published var episodes: [Episode] = [
             Episode(title: "1st: The Engagement"),
@@ -37,12 +38,17 @@ enum Example2 {
     // MARK: - Views
 
     struct ContentView: View {
+
         @StateObject private var seriesModel = SeriesModel()
+
+        /// ➡️ Here SwiftUI will start listening to changes in episodes.
         @StateObject private var episodesModel = EpisodesModel()
+
         var body: some View {
             VStack(spacing: 16) {
                 TitleView(title: seriesModel.title)
                 MyFavouriteView(model: seriesModel)
+                /// ➡️ Changes in episodes, will redraw this view only.
                 EpisodesView(model: episodesModel)
             }
         }

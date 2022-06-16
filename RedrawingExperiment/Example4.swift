@@ -64,7 +64,7 @@ enum Example4 {
                     action: { model.isMyFavourite.send(!isMyFavourite) },
                     label: {
                         /// ➡️ Set @State value into some view
-                        /// We could also pass it deeper via @Binding and then surrounding views won't be redrawn.
+                        /// We could also pass it deeper through @Binding and then surrounding views won't be redrawn.
                         Image(systemName: isMyFavourite ? "heart.fill" : "heart")
                         Text(isMyFavourite ? "Remove from favourites" : "Add to favourites")
                     }

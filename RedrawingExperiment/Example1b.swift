@@ -41,6 +41,8 @@ enum Example1b {
     /// ➡️ Just little change in views.
     /// - now not referencing ObservableObject directly
     /// - but actually referencing it indirectly through Binding
+    /// This approach nicely prevents redraws for @State,
+    /// - but not for ObservableObject
 
     struct TitleView: View {
         @Binding var title: String /// ➡️ Changed to Binding.

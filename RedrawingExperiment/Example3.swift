@@ -17,7 +17,9 @@ enum Example3 {
     }
 
     class EpisodesModel: ObservableObject {
-        /// ➡️ Lots of episodes
+        /// ➡️ Now this will change only if we want to replace all episodes with different ones.
+        /// ➡️ Like when switching between two seasons.
+        /// ➡️ But we won't emit change when there is some little change inside single episode.
         @Published var episodes: [EpisodeModel] = [
             EpisodeModel(title: "1st: The Engagement"),
             EpisodeModel(title: "2nd: The Bridesmaids"),
@@ -28,6 +30,7 @@ enum Example3 {
         ] + (1...100_000).map { EpisodeModel(title: "#\($0): The Bachelorette") }
     }
 
+    /// ➡️ Handles changes related to this specific episode.
     class EpisodeModel: ObservableObject, Identifiable {
         let id = UUID()
         let title: String

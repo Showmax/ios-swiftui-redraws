@@ -19,6 +19,9 @@
 		C497DE2027C3821C00CAA57F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C497DE1F27C3821C00CAA57F /* ContentView.swift */; };
 		C497DE2227C3821E00CAA57F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C497DE2127C3821E00CAA57F /* Assets.xcassets */; };
 		C497DE2527C3821E00CAA57F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C497DE2427C3821E00CAA57F /* Preview Assets.xcassets */; };
+		C4E7431C2A384F6400A17FFA /* Example3b.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E7431B2A384F6400A17FFA /* Example3b.swift */; };
+		C4E7431E2A38525100A17FFA /* Example3c.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E7431D2A38525100A17FFA /* Example3c.swift */; };
+		C4E743202A38546000A17FFA /* Example3d.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E7431F2A38546000A17FFA /* Example3d.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		C497DE1F27C3821C00CAA57F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C497DE2127C3821E00CAA57F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C497DE2427C3821E00CAA57F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C4E7431B2A384F6400A17FFA /* Example3b.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example3b.swift; sourceTree = "<group>"; };
+		C4E7431D2A38525100A17FFA /* Example3c.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example3c.swift; sourceTree = "<group>"; };
+		C4E7431F2A38546000A17FFA /* Example3d.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example3d.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +81,9 @@
 				C43ACAD028577C9200E14143 /* Example1d.swift */,
 				C496E8EE27C9834400057465 /* Example2.swift */,
 				C496E8F027C9855A00057465 /* Example3.swift */,
+				C4E7431B2A384F6400A17FFA /* Example3b.swift */,
+				C4E7431D2A38525100A17FFA /* Example3c.swift */,
+				C4E7431F2A38546000A17FFA /* Example3d.swift */,
 				C496E8F227C98B1000057465 /* Example4.swift */,
 				C496E8EA27C981EA00057465 /* Helpers.swift */,
 				C497DE2127C3821E00CAA57F /* Assets.xcassets */,
@@ -161,12 +170,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4E743202A38546000A17FFA /* Example3d.swift in Sources */,
 				C496E8F327C98B1000057465 /* Example4.swift in Sources */,
 				C497DE2027C3821C00CAA57F /* ContentView.swift in Sources */,
 				C496E8F127C9855A00057465 /* Example3.swift in Sources */,
+				C4E7431E2A38525100A17FFA /* Example3c.swift in Sources */,
 				C496E8EB27C981EA00057465 /* Helpers.swift in Sources */,
 				C43ACAD128577C9200E14143 /* Example1d.swift in Sources */,
 				C496E8ED27C9820900057465 /* Example1.swift in Sources */,
+				C4E7431C2A384F6400A17FFA /* Example3b.swift in Sources */,
 				C44818FB284DF10F00D4C056 /* Example1c.swift in Sources */,
 				C497DE1E27C3821C00CAA57F /* RedrawingExperimentApp.swift in Sources */,
 				C44818F7284DE50C00D4C056 /* Example1b.swift in Sources */,

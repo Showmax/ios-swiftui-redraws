@@ -4,6 +4,11 @@ Blog post: https://showmax.engineering/articles/unexpected-redrawing-in-swiftui
 
 At first sight, I absolutely loved how simple it was to announce changes to SwiftUI views. You just set a value in `@Published` variables and the view gets reloaded with the fresh value. But soon I realized that there was something I’d missed: the context. In fact, it is described in [Apple docs](https://developer.apple.com/documentation/combine/observableobject#overview). But it's quite easy to overlook all of the consequences when reading. You understand it better in practice. Let’s have a look at a few examples.
 
+### 2023-06-13 update: 
+
+- On WWDC 2023 Apple addressed following redraws via `@Observable` macro, so SwiftUI will redraw only those parts of UI for whose the model value actually did change, and does not redraw unrelated UI. 
+- For more information see: https://developer.apple.com/wwdc23/10149
+
 ## ObservableObject's objectWillChange
 
 Consider a model that implements `ObservableObject` with several `@Published` variables. `ObservableObject` will automatically synthesize the `objectWillChange` property. Each SwiftUI view that uses your `ObservableObject` will subscribe to the `objectWillChange` changes. Now, if your model changes one of the `@Published` variables, then SwiftUI will redraw all of the views that use your `ObservableObject`.
@@ -107,7 +112,6 @@ We have tried several of the options below. They are sorted by their complexity.
 - Code example
     - https://github.com/Showmax/ios-swiftui-redraws/blob/master/RedrawingExperiment/Example1.swift
 
-
 ## #2 Divide into separate observable objects
 
 - Level: easy
@@ -132,6 +136,10 @@ GIF example:
 - Level: moderate
 - This is suitable for cases when you have a list of items and each of them can change independently.
 - You decouple the component from the original changes. Now the component only works with a subset of the data it actually needs. And, if necessary, you can report changes back to the parent observable object.
+    - How to report changes to parent? See options in repo:
+       - `Example3b` ... via callback closure, downside is that it involves changes in child object
+       - `Example3c` ... via publishers available in child object, all observing handled in parent object, no need to change child object
+       - `Example3d` ... via common external manager object, in case child anyway communicate with some external manager, then also parent can listen to it.
 - We used this for the rows in the episodes list on the Showmax detail screen.
    - Each row was represented by a separate EpisodeModel: ObservableObject.
    - The parent EpisodesModel had the property @Published var episodes: [EpisodeModel] so when it was set, all episodes were redrawn.

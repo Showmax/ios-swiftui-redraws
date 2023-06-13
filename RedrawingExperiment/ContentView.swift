@@ -38,6 +38,21 @@ struct ContentView: View {
                         .navigationTitle("#3 Sub observable objects")
                         .navigationBarTitleDisplayMode(.inline)
                 }
+                NavigationLink("#3 Sub observable objects (report changes to parent via closure)") {
+                    Example3b.ContentView()
+                        .navigationTitle("#3 Sub observable objects (report changes to parent via closure)")
+                        .navigationBarTitleDisplayMode(.inline)
+                }
+                NavigationLink("#3 Sub observable objects (report changes to parent via objectWillChange)") {
+                    Example3c.ContentView()
+                        .navigationTitle("#3 Sub observable objects (report changes to parent via objectWillChange)")
+                        .navigationBarTitleDisplayMode(.inline)
+                }
+                NavigationLink("#3 Sub observable objects (report changes to parent via common manager)") {
+                    Example3d.ContentView()
+                        .navigationTitle("#3 Sub observable objects (report changes to parent via common manager)")
+                        .navigationBarTitleDisplayMode(.inline)
+                }
                 NavigationLink("#4 Publisher + onReceive + @State") {
                     Example4.ContentView()
                         .navigationTitle("#4 Publisher + onReceive + @State")
